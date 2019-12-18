@@ -1,0 +1,27 @@
+<h1>All Sales Vinyl</h1>
+
+<h3>Available Records</h3>
+
+<% if @rooms.any? %>
+<ul>
+  <% @rooms.each do |room| %>
+    <li><a href="/rooms/<%= room.name %>"><%= room.name %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are currently no records to display.</p>
+<% end %>
+
+<a href="/rooms/new">Add a new room</a>
+
+<form action="/rooms" method="get">
+  <div class="form-group">
+    <label for="search">Search</label>
+    <input id="search" name="search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Go!</button>
+</form>
+
+<form action="/rooms" method="get">
+  <button type="submit" name="sort" class="btn">Sort!</button>
+</form>
