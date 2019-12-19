@@ -11,12 +11,7 @@ get('/test') do
 end
 
 get('/admin') do
-  red_room = Room.new("red", nil,"words", "words", "words", 'right')
-  red_room.save()
-  green_room = Room.new("green", nil,"words", "words", "words", 'straight')
-  green_room.save()
-  blue_room = Room.new("blue", nil,"words", "words", "words", 'left')
-  blue_room.save()
+  test = Room.admin_start()
   @rooms = Room.all
   erb(:admin)
 end
@@ -50,9 +45,10 @@ get('/rooms/:name') do
   if params.length == 1
     puts "cool..."
   elsif params.keys[0] == @room.room_exit
-    room.next method...
-    @room = self.name
-    binding.pry
+    # room.next method...
+    # @room = self.name
+    @room.correct
+    # binding.pry
   elsif params.keys[0] != @room.room_exit
     binding.pry
   else

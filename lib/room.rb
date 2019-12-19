@@ -3,7 +3,7 @@ class Room
   # attr_accessor :name
 
   @@rooms = {}
-
+  @@score = 1
 
   @@total_rows = 0 # We've added a class variable to keep track of total rows and increment the value when an ALbum is added.
 
@@ -14,6 +14,25 @@ class Room
     @room_prop = room_prop
     @room_sense = room_sense
     @room_exit = room_exit
+  end
+
+  def admin_start
+    red_room = Room.new("red", nil,"words", "words", "words", 'right')
+    red_room.save()
+    green_room = Room.new("green", nil,"words", "words", "words", 'straight')
+    green_room.save()
+    blue_room = Room.new("blue", nil,"words", "words", "words", 'left')
+    blue_room.save()
+  end
+
+
+  def correct
+    puts "correct start..."
+    "/rooms/#{}"
+    link_to('test', http)
+    @@rooms.values[@@score]
+    puts "correct end..."
+
   end
 
   def self.all
