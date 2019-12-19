@@ -1,29 +1,16 @@
 <h2>Room Name: <%= @room.name %></h2>
-<h3>Room Year: <%= @room.year %></h3>
-<h3>Room Genre: <%= @room.genre %></h3>
-<h3>Room Artist: <%= @room.artist %></h3>
+<h3>Room Color: <%= @room.room_color %></h3>
+<h3>Room Prop: <%= @room.room_prop %></h3>
+<h3>Room Sense: <%= @room.room_sense %></h3>
+<h3>Room Exit: <%= @room.room_exit %></h3>
 
-<h3>Room Songs</h3>
 
-  <% if @room.songs %>
-    <ul>
-      <% @room.songs.each do |song| %>
-        <li><a href="/rooms/<%= @room.name %>/songs/<%= song.id %>"><%= song.name %></a></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>There are no songs listed for this room yet.</p>
-  <% end %>
 
-<h4>Add a song:</h4>
 
-<form action="/rooms/<%= @room.name %>/songs" method="post">
-  <div class="form-group">
-    <label for="song_name">Song name</label>
-    <input id="song_name" name="song_name" class="form-control" type="text">
-  </div>
-  <button type="submit" class="btn">Add song</button>
+<form action="/rooms/<%= @room.name %>" method="get">
+
+  <button type="submit" class="btn" name="left">Proceed left</button>
+  <button type="submit" class="btn" name="straight">Proceed straight</button>
+  <button type="submit" class="btn" name="right">Proceed right</button>
+
 </form>
-
-<p><a href="/rooms/<%= @room.name %>/edit">Edit room</a></p>
-<a href="/rooms">Return to room list</a>

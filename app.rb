@@ -10,7 +10,19 @@ get('/test') do
   erb(:whatever)
 end
 
+get('/admin') do
+  red_room = Room.new("red", nil,"words", "words", "words", 'right')
+  red_room.save()
+  green_room = Room.new("green", nil,"words", "words", "words", 'straight')
+  green_room.save()
+  blue_room = Room.new("blue", nil,"words", "words", "words", 'left')
+  blue_room.save()
+  @rooms = Room.all
+  erb(:admin)
+end
+
 get('/') do
+
   @rooms = Room.all
   erb(:rooms)
 end
@@ -32,12 +44,27 @@ end
 
 get('/rooms/:name') do
   @room = Room.find(params[:name])
+
+# WORK IN PROGRESS
+
+  if params.length == 1
+    puts "cool..."
+  elsif params.keys[0] == @room.room_exit
+    room.next method...
+    @room = self.name
+    binding.pry
+  elsif params.keys[0] != @room.room_exit
+    binding.pry
+  else
+    puts "cool..."
+  end
+
   erb(:room)
 end
 
 post('/rooms') do
   room_name = params[:room_name] #room_name?
-  room = Room.new(room_name, nil, nil, nil, nil)
+  room = Room.new(room_name, nil, nil, nil, nil, nil)
   room.save()
   @rooms = Room.all() # Adding this line will fix the error.
   erb(:rooms)
@@ -51,7 +78,7 @@ end
 patch('/rooms/:name') do
   @room = Room.find(params[:name])
   values = *params.values
-  @room.update(values[1], values[2], values[3], values[4])
+  @room.update(values[1], values[2], values[3], values[4], values[5])
   @rooms = Room.all
   erb(:rooms)
   # binding.pry

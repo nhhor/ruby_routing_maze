@@ -3,18 +3,20 @@
 <form action="/rooms/<%= @room.name() %>" method="post">
   <input name="_method" type="hidden" value="patch">
 
-  <label for="room_name">Rename room (unavailable)</label>
-  <input id="room_name" name="room_name" type="text">
+  <label for="room_name">Rename room</label>
+  <input id="room_name" name="room_name" type="text" required>
 
-  <label for="year">room year</label>
-  <input id="year" name="year" type="text">
+  <label for="room_color">room color</label>
+  <input id="room_color" name="room_color" type="text" required>
 
-  <label for="genre">room genre</label>
-  <input id="genre" name="genre" type="text">
+  <label for="room_prop">room prop</label>
+  <input id="room_prop" name="room_prop" type="text" required>
 
-  <label for="artist">room artist</label>
-  <input id="artist" name="artist" type="text">
+  <label for="room_sense">room sense</label>
+  <input id="room_sense" name="room_sense" type="text" required>
 
+  <label for="room_exit">room exit</label>
+  <input id="room_exit" name="room_exit" type="text" required>
 
   <button type="submit">Update</button>
 </form>

@@ -1,17 +1,19 @@
 class Room
-  attr_reader :id, :name, :year, :genre, :artist ##CHANGE#Our new save method will need reader methods.
+  attr_reader :id, :name, :room_color, :room_prop, :room_sense, :room_exit ##CHANGE#Our new save method will need reader methods.
   # attr_accessor :name
 
   @@rooms = {}
 
+
   @@total_rows = 0 # We've added a class variable to keep track of total rows and increment the value when an ALbum is added.
 
-  def initialize(name, id, year, genre, artist) ##CHANGE # We've added id as a second parameter.
+  def initialize(name, id, room_color, room_prop, room_sense, room_exit) ##CHANGE # We've added id as a second parameter.
     @name = name
     @id = id || @@total_rows += 1  # We've added code to handle the id.
-    @year = year
-    @genre = genre
-    @artist = artist
+    @room_color = room_color
+    @room_prop = room_prop
+    @room_sense = room_sense
+    @room_exit = room_exit
   end
 
   def self.all
@@ -23,7 +25,7 @@ class Room
   end
 
   def save
-    @@rooms[self.name] = Room.new(self.name, self.id, self.year, self.genre, self.artist) #CHANGE
+    @@rooms[self.name] = Room.new(self.name, self.id, self.room_color, self.room_prop, self.room_sense, self.room_exit) #CHANGE
   end
 
   def ==(room_to_compare)
@@ -41,8 +43,8 @@ class Room
     @@rooms[name]
   end
 
-  def update(name2, year, genre, artist)
-    room = Room.new(name2, nil, year, genre, artist) # nil added as second argument
+  def update(name2, room_color, room_prop, room_sense, room_exit)
+    room = Room.new(name2, nil, room_color, room_prop, room_sense, room_exit) # nil added as second argument
     room.save()
     @@rooms.delete(self.name)
   end
